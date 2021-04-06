@@ -134,7 +134,7 @@ public class prescription extends AppCompatActivity {
         cRef.document(uid_doc).addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                doctorName = documentSnapshot.getString("full_name").toString();
+                doctorName = documentSnapshot.getString("full_name");
             }
         });
 
@@ -153,6 +153,8 @@ public class prescription extends AppCompatActivity {
                 cRef.document(String.valueOf(count+1)).set(dataObj);
 
 //                myRef.child(String.valueOf(count+1)).setValue(dataObj);
+
+                Toast.makeText(prescription.this, doctorName, Toast.LENGTH_SHORT).show();
 
                 try {
                     printPdf();
@@ -188,7 +190,7 @@ public class prescription extends AppCompatActivity {
         canvas.drawText("Patient Name : ",20,80,paint);
         canvas.drawLine(20,90,230,90,forLinePaint);
 
-        canvas.drawText("By Dr." +doctorName,20,105,paint);
+        canvas.drawText("By Dr."+doctorName,20,105,paint);
 
         canvas.drawText("Illness : "+ill.getText(),20,125,paint);
         canvas.drawText("Prescription : ",20,145,paint);
