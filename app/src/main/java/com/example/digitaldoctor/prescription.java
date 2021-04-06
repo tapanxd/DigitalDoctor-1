@@ -154,8 +154,6 @@ public class prescription extends AppCompatActivity {
 
 //                myRef.child(String.valueOf(count+1)).setValue(dataObj);
 
-                Toast.makeText(prescription.this, doctorName, Toast.LENGTH_SHORT).show();
-
                 try {
                     printPdf();
                 } catch (IOException e) {
@@ -190,7 +188,7 @@ public class prescription extends AppCompatActivity {
         canvas.drawText("Patient Name : ",20,80,paint);
         canvas.drawLine(20,90,230,90,forLinePaint);
 
-        canvas.drawText("By Dr."+doctorName,20,105,paint);
+        canvas.drawText("By Dr." +doctorName,20,105,paint);
 
         canvas.drawText("Illness : "+ill.getText(),20,125,paint);
         canvas.drawText("Prescription : ",20,145,paint);
